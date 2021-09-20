@@ -1,11 +1,14 @@
 package com.lamnt.furniture
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.lamnt.furniture.databinding.ActivityMainBinding
+import com.lamnt.furniture.ui.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+    override fun getLayoutId(): Int = R.layout.activity_main
+
+    override fun onViewReady(savedInstance: Bundle?) {
+
     }
 }
