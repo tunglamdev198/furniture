@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.lamnt.furniture.R
+import com.lamnt.furniture.extensions.changeStatusBarColor
 import com.lamnt.furniture.ui.custom.LoadingDialog
 
 abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity() {
@@ -46,5 +47,10 @@ abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity() {
 
     fun getCurrentFragment(): Fragment {
         return supportFragmentManager.findFragmentById(R.id.frameContainer)!!
+    }
+
+    override fun onResume() {
+        super.onResume()
+        changeStatusBarColor(R.color.white)
     }
 }
