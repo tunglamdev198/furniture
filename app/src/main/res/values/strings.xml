@@ -7,5 +7,23 @@
     <string name="preference_name">furniture_pref</string>
     <string name="msg_token_expired">Token Expired</string>
     <string name="msg_has_error">Has Error</string>
-    <string name="text_login">Login</string>
+    <string name="text_sign_in">Sign In</string>
+    <string name="text_username">Username</string>
+    <string name="text_password">Password</string>
+    <string name="text_forgot">Forgot Password</string>
+    <string name="text_reset_password">Reset Password</string>
+    <string name="text_create_account">Create Account</string>
+    <string name="text_not_registered">Not registered yet?</string>
+    <string name="text_phone_number">Phone Number</string>
+    <string name="text_already_register">Already Registered?</string>
+    <string name="text_send_SMS">Send SMS</string>
+    <string name="text_enter_new_password">Enter a new password</string>
+    <string name="text_forgot_description">Enter your phone number below. We will send you an SMS with a pin code to confirm your identity.</string>
+    <string name="text_new_password">New Password</string>
+    <string name="text_re_enter_password">Re-enter Password</string>
+    <string name="text_enter_pin">Enter the pin code sent to your mobile phone</string>
+    <string name="text_did_not_receive_otp">Did not receive OTP?</string>
+    <string name="text_resend_otp">Resend</string>
+    <string name="text_confirm">Confirm</string>
+
 </resources>
