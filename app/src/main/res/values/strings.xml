@@ -25,5 +25,6 @@
     <string name="text_did_not_receive_otp">Did not receive OTP?</string>
     <string name="text_resend_otp">Resend</string>
     <string name="text_confirm">Confirm</string>
+    <string name="text_login">Login</string>
 
 </resources>
