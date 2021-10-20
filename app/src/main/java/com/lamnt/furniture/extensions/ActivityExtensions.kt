@@ -2,11 +2,14 @@ package com.lamnt.furniture.extensions
 
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.ColorRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
@@ -15,10 +18,12 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.lamnt.furniture.MainActivity
 import com.lamnt.furniture.R
 import com.lamnt.furniture.ui.base.Event
 import com.lamnt.furniture.ui.base.EventObserver
 import com.lamnt.furniture.utils.PermissionHelper
+import java.util.jar.Manifest
 
 /**
  * Replace Fragment with fade anim
@@ -286,8 +291,28 @@ fun Fragment.showConfirm(
  * Check runtime permission
  */
 
-fun Fragment.checkPermission(permission: String): Boolean {
-    return PermissionHelper.checkPermissions(activity, permission)
+fun Fragment.checkPermission(permission: String, callOnGranted: () -> Unit) {
+    val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                callOnGranted()
+            }
+        }
+    when (PackageManager.PERMISSION_GRANTED) {
+        ContextCompat.checkSelfPermission(
+            requireActivity(),
+            permission
+        ) -> {
+            callOnGranted()
+        }
+        else -> {
+            requestPermissionLauncher.launch(
+                permission
+            )
+        }
+    }
 }
 
 /**
@@ -309,21 +334,21 @@ fun Fragment.requestPermission(permission: Array<String>, code: Int) {
  * Change title toolbar
  */
 
-//fun MainActivity.changeTitle(@StringRes res: Int) {
-//    if (res == 0) {
-//        binding.txtTitle.gone()
-//    } else {
-//        binding.txtTitle.visible()
-//    }
-//}
-//
-//fun MainActivity.changeTitle(title: String) {
-//    if (title.isNullOrEmpty()) {
-//        binding.txtTitle.gone()
-//    } else {
-//        binding.txtTitle.visible()
-//    }
-//}
+fun MainActivity.changeTitle(@StringRes res: Int) {
+    if (res == 0) {
+        binding.txtTitle.gone()
+    } else {
+        binding.txtTitle.visible()
+    }
+}
+
+fun MainActivity.changeTitle(title: String) {
+    if (title.isNullOrEmpty()) {
+        binding.txtTitle.gone()
+    } else {
+        binding.txtTitle.visible()
+    }
+}
 //
 ///**
 // * Handle action left of toolbar
@@ -336,62 +361,48 @@ fun Fragment.requestPermission(permission: Array<String>, code: Int) {
 //    }
 //}
 //
-///**
-// * Check show Toolbar and Bottom bar or not
-// */
-//
-//fun MainActivity.showNavigate(check: Boolean) {
-//    with(binding) {
-//        if (check) {
-//            toolBar.visible()
-//        } else {
-//            toolBar.gone()
-//        }
-//    }
-//}
-//
-//fun MainActivity.showIconAccount(check: Boolean) {
-//    with(binding.btnRight) {
-//        if (check) {
-//            setImageResource(R.drawable.ic_account)
-//            visible()
-//            click {
-//                replaceFragment(AccountFragment(), true)
-//            }
-//        } else {
-//            gone()
-//        }
-//    }
-//}
-//
-///**
-// * Check show Bottom bar or not
-// */
-//
-//fun MainActivity.showBottomBar(check: Boolean) {
-//    with(binding) {
-//        if (check) {
-//            bottomNav.visible()
-//        } else {
-//            bottomNav.gone()
-//        }
-//    }
-//}
-//
-///**
-// * Check show left button or not
-// */
-//
-//fun MainActivity.showActionLeft(check: Boolean) {
-//    with(binding) {
-//        if (check) {
-//            btnLeft.visible()
-//            actionLeft.gone()
-//        } else {
-//            btnLeft.gone()
-//        }
-//    }
-//}
+/**
+ * Check show Toolbar and Bottom bar or not
+ */
+
+fun MainActivity.showNavigate(check: Boolean) {
+    with(binding) {
+        if (check) {
+            toolBar.visible()
+        } else {
+            toolBar.gone()
+        }
+    }
+}
+
+/**
+ * Check show Bottom bar or not
+ */
+
+fun MainActivity.showBottomBar(check: Boolean) {
+    with(binding) {
+        if (check) {
+            mainBottomNav.visible()
+        } else {
+            mainBottomNav.gone()
+        }
+    }
+}
+
+/**
+ * Check show back button or not
+ */
+
+fun MainActivity.showButtonBack(check: Boolean) {
+    with(binding) {
+        if (check) {
+            btnBack.visible()
+        } else {
+            btnBack.gone()
+        }
+    }
+}
+
 //
 ///**
 // * Check show right action or not
@@ -502,10 +513,10 @@ fun Fragment.requestPermission(permission: Array<String>, code: Int) {
 //    }
 //}
 //
-//fun Fragment.backToMain() {
-//    if (requireActivity() is MainActivity)
-//        (requireActivity() as MainActivity).binding.bottomNav.selectedItemId = R.id.mnu_main
-//}
+fun Fragment.backToMain() {
+    if (requireActivity() is MainActivity)
+        (requireActivity() as MainActivity).binding.mainBottomNav.selectedItemId = R.id.mnuMain
+}
 
 
 /**

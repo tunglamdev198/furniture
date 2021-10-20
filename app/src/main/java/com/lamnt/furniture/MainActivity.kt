@@ -2,10 +2,13 @@ package com.lamnt.furniture
 
 import android.os.Bundle
 import com.lamnt.furniture.databinding.ActivityMainBinding
+import com.lamnt.furniture.extensions.click
 import com.lamnt.furniture.extensions.replaceFragment
 import com.lamnt.furniture.ui.base.BaseActivity
 import com.lamnt.furniture.ui.main.home.HomeFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun getLayoutId(): Int = R.layout.activity_main
@@ -29,5 +32,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
             }
         }
+
+        binding.btnBack.click { onBackPressed() }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

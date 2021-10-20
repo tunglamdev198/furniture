@@ -14,10 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.lamnt.furniture.MainActivity
 import com.lamnt.furniture.R
-import com.lamnt.furniture.extensions.changeStatusBarColor
-import com.lamnt.furniture.extensions.isNullOrEmpty
-import com.lamnt.furniture.extensions.navigateTo
-import com.lamnt.furniture.extensions.showInfo
+import com.lamnt.furniture.extensions.*
 
 /**
  * Base Fragment with Data Binding and ViewModel
@@ -139,13 +136,12 @@ abstract class BaseFragmentMVVM<B : ViewDataBinding, V : BaseViewModel> : Fragme
 
     override fun onResume() {
         super.onResume()
-        if (requireActivity() is MainActivity) {
+        if (isMain()) {
             with((requireActivity() as MainActivity)) {
-//                showNavigate(true)
-//                showIconAccount(false)
-//                showActionLeft(true)
-//                showActionRight(false)
-//                showButtonRight(false)
+                showNavigate(true)
+                showButtonBack(true)
+                showBottomBar(false)
+                changeStatusBarColor(R.color.white)
             }
         }
     }
