@@ -1,114 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/imgForgot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_48"
-        android:background="@drawable/img_forgot_password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imgBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/normal_margin"
-        android:layout_marginTop="@dimen/space_14"
-        android:background="@drawable/ic_back"
-        app:layout_constraintEnd_toStartOf="@+id/imgForgot"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgForgot" />
-
-    <TextView
-        android:id="@+id/txtForgotPassword"
-        style="@style/TextBold32"
-        android:layout_marginStart="@dimen/normal_margin"
-        android:layout_marginTop="@dimen/space_48"
-        android:text="@string/text_forgot"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgForgot" />
-
-    <TextView
-        android:id="@+id/txtDescription"
-        style="@style/TextBold14"
-        android:layout_marginHorizontal="@dimen/normal_margin"
-        android:layout_marginTop="@dimen/space_14"
-        android:text="@string/text_enter_pin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtForgotPassword" />
-
-    <LinearLayout
-        android:id="@+id/otpLayout"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/normal_margin"
-        android:layout_marginTop="@dimen/big_space"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDescription">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/edtCode1"
-            style="@style/OTPBox"
-            android:layout_marginEnd="@dimen/larger_space"
-            tools:ignore="LabelFor" />
+        <ImageView
+            android:id="@+id/imgForgot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_48"
+            android:background="@drawable/img_forgot_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/edtCode2"
-            style="@style/OTPBox"
-            android:layout_marginEnd="@dimen/larger_space" />
-
-        <EditText
-            android:id="@+id/edtCode3"
-            style="@style/OTPBox"
-            android:layout_marginEnd="@dimen/larger_space" />
-
-        <EditText
-            android:id="@+id/edtCode4"
-            style="@style/OTPBox" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/normal_margin"
-        android:layout_marginTop="@dimen/xlarge_space"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otpLayout">
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/space_14"
+            android:background="@drawable/ic_back"
+            app:layout_constraintEnd_toStartOf="@+id/imgForgot"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgForgot" />
 
         <TextView
-            style="@style/TextBold14"
-            android:text="@string/text_did_not_receive_otp" />
+            android:id="@+id/txtForgotPassword"
+            style="@style/TextBold32"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/space_48"
+            android:text="@string/text_forgot"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgForgot" />
 
         <TextView
+            android:id="@+id/txtDescription"
             style="@style/TextBold14"
-            android:layout_marginStart="@dimen/small_space"
-            android:text="@string/text_resend_otp"
-            android:textColor="@color/teal_100" />
-    </LinearLayout>
+            android:layout_marginHorizontal="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/space_14"
+            android:text="@string/text_enter_pin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtForgotPassword" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnConfirm"
-        style="@style/BlueButton"
-        android:layout_marginHorizontal="@dimen/normal_margin"
-        android:layout_marginTop="@dimen/xlarge_space"
-        android:text="@string/text_confirm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        <LinearLayout
+            android:id="@+id/otpLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/big_space"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescription">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/edtCode1"
+                style="@style/OTPBox"
+                android:layout_marginEnd="@dimen/larger_space"
+                tools:ignore="LabelFor" />
+
+            <EditText
+                android:id="@+id/edtCode2"
+                style="@style/OTPBox"
+                android:layout_marginEnd="@dimen/larger_space" />
+
+            <EditText
+                android:id="@+id/edtCode3"
+                style="@style/OTPBox"
+                android:layout_marginEnd="@dimen/larger_space" />
+
+            <EditText
+                android:id="@+id/edtCode4"
+                style="@style/OTPBox" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/xlarge_space"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otpLayout">
+
+            <TextView
+                style="@style/TextBold14"
+                android:text="@string/text_did_not_receive_otp" />
+
+            <TextView
+                style="@style/TextBold14"
+                android:layout_marginStart="@dimen/small_space"
+                android:text="@string/text_resend_otp"
+                android:textColor="@color/teal_100" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnConfirm"
+            style="@style/BlueButton"
+            android:layout_marginHorizontal="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/xlarge_space"
+            android:text="@string/text_confirm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

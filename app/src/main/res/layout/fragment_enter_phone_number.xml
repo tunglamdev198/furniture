@@ -21,64 +21,53 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginTop="@dimen/space_14"
-            android:src="@drawable/ic_back"
+            android:background="@drawable/ic_back"
             app:layout_constraintEnd_toStartOf="@+id/imgForgot"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imgForgot" />
 
         <TextView
-            android:id="@+id/txtResetPassword"
+            android:id="@+id/txtForgotPassword"
             style="@style/TextBold32"
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginTop="@dimen/space_48"
-            android:text="@string/text_reset_password"
+            android:text="@string/text_forgot"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgForgot" />
 
         <TextView
             android:id="@+id/txtDescription"
             style="@style/TextBold14"
+            android:layout_width="match_parent"
             android:layout_marginHorizontal="@dimen/normal_margin"
-            android:layout_marginTop="@dimen/space_14"
-            android:text="@string/text_enter_new_password"
+            android:layout_marginTop="@dimen/large_space"
+            android:text="@string/text_forgot_description"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtResetPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/txtForgotPassword" />
 
         <EditText
-            android:id="@+id/edtNewPassword"
+            android:id="@+id/edtPhoneNumber"
             style="@style/NormalEditText"
             android:layout_marginHorizontal="@dimen/normal_margin"
-            android:layout_marginTop="@dimen/xlarge_space"
-            android:drawableStart="@drawable/ic_lock"
-            android:hint="@string/text_new_password"
-            android:inputType="textPassword"
+            android:layout_marginTop="@dimen/big_space"
+            android:drawableStart="@drawable/ic_phone"
+            android:hint="@string/text_phone_number"
+            android:inputType="phone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
 
-        <EditText
-            android:id="@+id/edtReEnterPassword"
-            style="@style/NormalEditText"
-            android:layout_marginHorizontal="@dimen/normal_margin"
-            android:layout_marginTop="@dimen/space_30"
-            android:drawableStart="@drawable/ic_lock"
-            android:hint="@string/text_re_enter_password"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtNewPassword" />
-
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnResetPassword"
+            android:id="@+id/btnSendSMS"
             style="@style/BlueButton"
             android:layout_marginHorizontal="@dimen/normal_margin"
-            android:layout_marginTop="@dimen/big_space"
-            android:text="@string/text_reset_password"
+            android:layout_marginTop="@dimen/xlarge_space"
+            android:background="@drawable/bg_button"
+            android:text="@string/text_send_SMS"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtReEnterPassword" />
-
+            app:layout_constraintTop_toBottomOf="@+id/edtPhoneNumber" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>
