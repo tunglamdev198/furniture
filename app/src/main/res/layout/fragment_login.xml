@@ -18,6 +18,7 @@
             style="@style/NormalEditText"
             android:layout_marginHorizontal="@dimen/normal_margin"
             android:drawableStart="@drawable/ic_person"
+            android:inputType="textPersonName"
             android:hint="@string/text_username"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
