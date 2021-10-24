@@ -13,6 +13,6 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
     override fun getLayoutId(): Int = R.layout.activity_auth
 
     override fun onViewReady(savedInstance: Bundle?) {
-        replaceFragment(LoginFragment(), true)
+        replaceFragment(LoginFragment(), false)
     }
 }
