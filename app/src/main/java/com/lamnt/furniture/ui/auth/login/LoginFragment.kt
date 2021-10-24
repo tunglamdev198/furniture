@@ -1,12 +1,14 @@
 package com.lamnt.furniture.ui.auth.login
 
 import android.os.Bundle
+import android.text.TextUtils
 import com.lamnt.furniture.MainActivity
 import com.lamnt.furniture.R
 import com.lamnt.furniture.databinding.FragmentLoginBinding
-import com.lamnt.furniture.extensions.click
-import com.lamnt.furniture.extensions.navigateTo
+import com.lamnt.furniture.extensions.*
+import com.lamnt.furniture.ui.auth.register.RegisterFragment
 import com.lamnt.furniture.ui.base.BaseFragmentMVVM
+import com.lamnt.furniture.ui.forgot_password.ForgotPasswordActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,8 +19,33 @@ class LoginFragment : BaseFragmentMVVM<FragmentLoginBinding, LoginViewModel>() {
 
     override fun onViewReady(savedInstance: Bundle?) {
         binding.btnSignIn.click {
-            requireActivity().navigateTo(MainActivity::class.java, true)
+            login()
         }
+        binding.txtCreateAccount.click {
+            switchToRegister()
+        }
+        binding.txtForgot.click {
+            switchToForgotPass()
+        }
+    }
+
+    private fun login() {
+
+        var username = binding.edtUsername.text.toString().trim()
+        var password = binding.edtPassword.text.toString().trim()
+
+        if (viewModel.validateUsername(username) && viewModel.validatePassword(password)) {
+            requireActivity().navigateTo(MainActivity::class.java, true)
+            showToast(getString(R.string.login_success))
+        }
+    }
+
+    private fun switchToRegister() {
+        replaceFragment(RegisterFragment(), true)
+    }
+
+    private fun switchToForgotPass(){
+        requireActivity().navigateTo(ForgotPasswordActivity::class.java, false)
     }
 
     override fun initSubscriber() {
