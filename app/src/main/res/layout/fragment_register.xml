@@ -1,81 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/txtCreateAccount"
-        style="@style/TextBold32"
-        android:layout_marginBottom="@dimen/space_48"
-        android:text="@string/text_create_account"
-        app:layout_constraintBottom_toTopOf="@+id/edtUsername"
-        app:layout_constraintStart_toStartOf="@+id/edtUsername" />
-
-    <EditText
-        android:id="@+id/edtUsername"
-        style="@style/NormalEditText"
-        android:layout_marginHorizontal="@dimen/normal_margin"
-        android:drawableStart="@drawable/ic_person"
-        android:hint="@string/text_username"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
-
-    <EditText
-        android:id="@+id/edtPhone"
-        style="@style/NormalEditText"
-        android:layout_marginHorizontal="@dimen/normal_margin"
-        android:layout_marginTop="@dimen/space_30"
-        android:drawableStart="@drawable/ic_phone"
-        android:hint="@string/text_phone_number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtUsername" />
-
-    <EditText
-        android:id="@+id/edtPassword"
-        style="@style/NormalEditText"
-        android:layout_marginHorizontal="@dimen/normal_margin"
-        android:layout_marginTop="@dimen/space_30"
-        android:drawableStart="@drawable/ic_lock"
-        android:hint="@string/text_password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPhone" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnCreateAccount"
-        style="@style/BlueButton"
-        android:layout_marginHorizontal="@dimen/normal_margin"
-        android:layout_marginTop="@dimen/space_160"
-        android:text="@string/text_create_account"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_48"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/btnCreateAccount"
-        app:layout_constraintStart_toStartOf="@+id/btnCreateAccount"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreateAccount">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
-            style="@style/TextBold12"
-            android:text="@string/text_already_register" />
+            android:id="@+id/txtCreateAccount"
+            style="@style/TextBold32"
+            android:layout_marginBottom="@dimen/space_48"
+            android:text="@string/text_create_account"
+            app:layout_constraintBottom_toTopOf="@+id/edtUsername"
+            app:layout_constraintStart_toStartOf="@+id/edtUsername" />
 
-        <TextView
-            android:id="@+id/txtSignIn"
-            style="@style/TextBold12"
-            android:layout_marginStart="@dimen/normal_space"
-            android:text="@string/text_sign_in"
-            android:textColor="@color/teal_100" />
-    </LinearLayout>
+        <EditText
+            android:id="@+id/edtUsername"
+            style="@style/NormalEditText"
+            android:inputType="textPersonName"
+            android:layout_marginHorizontal="@dimen/normal_margin"
+            android:drawableStart="@drawable/ic_person"
+            android:hint="@string/text_username"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/edtPhone"
+            style="@style/NormalEditText"
+            android:layout_marginHorizontal="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/space_30"
+            android:drawableStart="@drawable/ic_phone"
+            android:inputType="phone"
+            android:hint="@string/text_phone_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtUsername" />
+
+        <EditText
+            android:id="@+id/edtPassword"
+            style="@style/NormalEditText"
+            android:layout_marginHorizontal="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/space_30"
+            android:drawableStart="@drawable/ic_lock"
+            android:hint="@string/text_password"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtPhone" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCreateAccount"
+            style="@style/BlueButton"
+            android:layout_marginHorizontal="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/space_160"
+            android:text="@string/text_create_account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_48"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/btnCreateAccount"
+            app:layout_constraintStart_toStartOf="@+id/btnCreateAccount"
+            app:layout_constraintTop_toBottomOf="@+id/btnCreateAccount">
+
+            <TextView
+                style="@style/TextBold12"
+                android:text="@string/text_already_register" />
+
+            <TextView
+                android:id="@+id/txtSignIn"
+                style="@style/TextBold12"
+                android:layout_marginStart="@dimen/normal_space"
+                android:text="@string/text_sign_in"
+                android:textColor="@color/teal_100" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
