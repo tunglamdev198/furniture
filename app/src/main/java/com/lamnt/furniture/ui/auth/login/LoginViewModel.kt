@@ -10,10 +10,9 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(@ApplicationContext context: Context) : BaseViewModel() {
-
-    @SuppressLint("StaticFieldLeak")
-    private val mContext: Context = context
+@SuppressLint("StaticFieldLeak")
+class LoginViewModel @Inject constructor(@ApplicationContext private val mContext: Context) :
+    BaseViewModel() {
 
     fun validateUsername(username: String): Boolean {
         if (TextUtils.isEmpty(username)) {

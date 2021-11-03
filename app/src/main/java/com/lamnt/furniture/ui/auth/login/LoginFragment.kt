@@ -31,12 +31,12 @@ class LoginFragment : BaseFragmentMVVM<FragmentLoginBinding, LoginViewModel>() {
 
     private fun login() {
 
-        var username = binding.edtUsername.text.toString().trim()
-        var password = binding.edtPassword.text.toString().trim()
+        val username = binding.edtUsername.toText()
+        val password = binding.edtPassword.toText()
 
         if (viewModel.validateUsername(username) && viewModel.validatePassword(password)) {
             requireActivity().navigateTo(MainActivity::class.java, true)
-            showToast(getString(R.string.login_success))
+            showInfo(getString(R.string.login_success))
         }
     }
 
