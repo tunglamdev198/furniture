@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="production"
+            type="com.lamnt.furniture.model.dto.Production" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginVertical="@dimen/normal_space"
+        android:layout_marginHorizontal="@dimen/normal_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/normal_space"
+        android:padding="@dimen/large_space"
+        app:cardCornerRadius="@dimen/large_space">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgProduct"
+                loadImageUrl="@{production.image}"
+                android:scaleType="fitCenter"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/normal_space"
+                app:layout_constraintDimensionRatio="1:1.2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RelativeLayout
+                android:id="@+id/layoutName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/large_space"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgProduct">
+
+                <TextView
+                    style="@style/TextBold14"
+                    android:text="@{production.name}"
+                    tools:text="Arm Chair" />
+
+                <TextView
+                    style="@style/TextBold14"
+                    android:layout_alignParentEnd="true"
+                    android:text="@{String.valueOf(production.price)}"
+                    android:textColor="@color/primary"
+                    tools:text="$20.00" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/large_space"
+                android:layout_marginTop="@dimen/normal_space"
+                android:layout_marginBottom="@dimen/large_space"
+                android:gravity="center_vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutName">
+
+                <TextView
+                    style="@style/TextBold14"
+                    android:text="@{String.valueOf(production.rating)}"
+                    tools:text="4.0" />
+
+                <RatingBar
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/large_space"
+                    android:numStars="5"
+                    android:rating="@{production.rating}"
+                    android:textColor="@color/primary" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

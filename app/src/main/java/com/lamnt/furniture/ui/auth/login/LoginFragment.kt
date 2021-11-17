@@ -1,7 +1,7 @@
 package com.lamnt.furniture.ui.auth.login
 
 import android.os.Bundle
-import android.text.TextUtils
+import com.lamnt.furniture.BuildConfig
 import com.lamnt.furniture.MainActivity
 import com.lamnt.furniture.R
 import com.lamnt.furniture.databinding.FragmentLoginBinding
@@ -18,6 +18,11 @@ class LoginFragment : BaseFragmentMVVM<FragmentLoginBinding, LoginViewModel>() {
     override fun getViewModelClazz(): Class<LoginViewModel> = LoginViewModel::class.java
 
     override fun onViewReady(savedInstance: Bundle?) {
+        if (BuildConfig.DEBUG) {
+            binding.edtUsername.setText("lamnt98")
+            binding.edtPassword.setText("Lam@12345")
+            postDelay(1000) { login() }
+        }
         binding.btnSignIn.click {
             login()
         }
@@ -44,11 +49,18 @@ class LoginFragment : BaseFragmentMVVM<FragmentLoginBinding, LoginViewModel>() {
         replaceFragment(RegisterFragment(), true)
     }
 
-    private fun switchToForgotPass(){
+    private fun switchToForgotPass() {
         requireActivity().navigateTo(ForgotPasswordActivity::class.java, false)
     }
 
     override fun initSubscriber() {
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        with(requireActivity() as MainActivity){
+            changeTitle(R.string.title_home)
+        }
     }
 }

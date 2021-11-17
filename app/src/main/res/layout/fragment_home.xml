@@ -6,10 +6,10 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical"
-        android:padding="@dimen/large_space">
+        android:padding="@dimen/normal_space">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCategories"
+            android:id="@+id/rvProductions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

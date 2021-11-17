@@ -4,7 +4,9 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.lamnt.furniture.data.remote.ApiService
 import com.lamnt.furniture.data.remote.datasouce.CategoryDataSource
+import com.lamnt.furniture.data.remote.datasouce.ProductionDatasource
 import com.lamnt.furniture.data.repository.impl.CategoryRepository
+import com.lamnt.furniture.data.repository.impl.ProductionRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,5 +37,14 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun provideProductionRemoteDataSource() = ProductionDatasource()
+
+    @Singleton
+    @Provides
     fun provideCategoryRepository(dataSource: CategoryDataSource) = CategoryRepository(dataSource)
+
+    @Singleton
+    @Provides
+    fun provideProductionRepository(dataSource: ProductionDatasource) =
+        ProductionRepository(dataSource)
 }
