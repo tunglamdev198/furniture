@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="production"
+            type="com.lamnt.furniture.model.dto.Production" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -21,6 +30,7 @@
 
             <ImageView
                 android:id="@+id/ivProduct"
+                loadImageUrl="@{production.image}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:srcCompat="@drawable/sample_chair" />
@@ -31,7 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/space_14"
-            android:text="Sample Title"
+            android:text="@{production.name}"
+            tools:text="Sample Title"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/cardView"
@@ -81,7 +92,8 @@
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@{String.valueOf(production.price)}"
+            tools:text="20.00"
             android:textSize="16sp"
             android:layout_marginEnd="@dimen/space_10"
             app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
