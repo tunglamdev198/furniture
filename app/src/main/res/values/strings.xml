@@ -47,6 +47,7 @@
     <string name="pls_enter_phone_number">Please enter your phone number!</string>
     <string name="pls_enter_otp">Please enter OTP!</string>
     <string name="title_home">Home</string>
+    <string name="add_cart">Add To Cart</string>
 
 
 </resources>
