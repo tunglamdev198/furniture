@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <variable
+            name="production"
+            type="com.lamnt.furniture.model.dto.Production" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/ivProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_300"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/sample_chair" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_14"
+                    android:layout_marginVertical="@dimen/space_14"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivProduct">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{production.name}"
+                        android:textSize="21sp"
+                        android:textStyle="bold"
+                        tools:text="Sample Title" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_10"
+                        android:orientation="horizontal">
+
+                        <RatingBar
+                            style="?android:attr/ratingBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:numStars="5"
+                            android:rating="@{production.rating}"
+                            android:textColor="@color/primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/normal_space"
+                            android:text="@{String.valueOf(production.rating)}"
+                            android:textColor="@color/primary"
+                            tools:text="4.5" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_14"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/small_space"
+                        android:text="$"
+                        android:textColor="@color/primary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(production.price)}"
+                        android:textColor="@color/primary"
+                        android:textSize="18sp"
+                        tools:text="20.00" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/space_14"
+                    android:layout_marginHorizontal="@dimen/space_14"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+                    android:text="@{String.valueOf(production.description)}"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+                    tools:text="This is description"
+                    android:textSize="14sp"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddToCarrt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_button"
+            android:backgroundTint="@color/primary"
+            android:text="@string/add_cart"
+            android:textColor="@color/white"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="@dimen/space_14"
+            android:layout_marginBottom="@dimen/space_14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
