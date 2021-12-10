@@ -6,7 +6,7 @@ data class Production(
     val slug: String,
     val price: Float,
     val image: String?,
-    val ratting: Float,
+    val rating: Float,
     val brandId: Int,
     val categoryId: Int,
     val quantity: Int,
