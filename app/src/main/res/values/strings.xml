@@ -48,6 +48,7 @@
     <string name="pls_enter_otp">Please enter OTP!</string>
     <string name="title_home">Home</string>
     <string name="add_cart">Add To Cart</string>
+    <string name="empty_cart">Cart is empty</string>
 
 
 </resources>
