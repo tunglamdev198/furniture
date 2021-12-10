@@ -48,8 +48,16 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="TextBold18" parent="TextBold">
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="TextBold20" parent="TextBold">
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextBold26" parent="TextBold">
+        <item name="android:textSize">26sp</item>
     </style>
 
     <style name="TextBold32" parent="TextBold">
@@ -70,6 +78,10 @@
 
     <style name="TextRegular16" parent="TextRegular">
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextRegular18" parent="TextRegular">
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="TextRegular20" parent="TextRegular">
@@ -119,4 +131,7 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
+    <style name="FavouriteRadio" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/favourite_button</item>
+    </style>
 </resources>

@@ -12,6 +12,7 @@
     <dimen name="larger_space">21dp</dimen>
     <dimen name="xlarge_space">24dp</dimen>
     <dimen name="space_30">30dp</dimen>
+    <dimen name="space_35">35dp</dimen>
     <dimen name="big_space">32dp</dimen>
     <dimen name="space_48">48dp</dimen>
     <dimen name="space_56">56dp</dimen>
@@ -21,6 +22,7 @@
     <dimen name="space_240">240dp</dimen>
     <dimen name="space_260">260dp</dimen>
     <dimen name="space_300">300dp</dimen>
+    <dimen name="space_450">450dp</dimen>
     <dimen name="tiny_icon_size">16dp</dimen>
     <dimen name="small_icon_size">20dp</dimen>
     <dimen name="normal_icon_size">24dp</dimen>
