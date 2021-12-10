@@ -11,6 +11,7 @@ import com.lamnt.furniture.ui.base.BaseFragmentMVVM
 import com.lamnt.furniture.ui.base.OnItemClickListener
 import com.lamnt.furniture.ui.main.detail.DetailFragment
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.Serializable
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragmentMVVM<FragmentHomeBinding, HomeViewModel>(), OnItemClickListener<Production> {
@@ -50,11 +51,13 @@ class HomeFragment : BaseFragmentMVVM<FragmentHomeBinding, HomeViewModel>(), OnI
         if (isMain()) {
             with((requireActivity() as MainActivity)) {
                 showBottomBar(true)
+                changeTitle("Home")
             }
         }
     }
 
     override fun onItemClick(view: View?, data: Production, position: Int) {
+        shareViewModel.production.value = data
         replaceFragment(DetailFragment(),true)
     }
 }

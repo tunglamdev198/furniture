@@ -23,17 +23,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imgProduct"
-                loadImageUrl="@{production.image}"
-                android:scaleType="fitCenter"
-                android:layout_width="0dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/productCart"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_margin="@dimen/normal_space"
+                app:cardCornerRadius="@dimen/large_space"
                 app:layout_constraintDimensionRatio="1:1.2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/imgProduct"
+                    loadImageUrl="@{production.image}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/sample_chair" />
+            </androidx.cardview.widget.CardView>
+
+            <RadioButton
+                android:id="@+id/btnFavourite"
+                android:layout_width="@dimen/xlarge_space"
+                android:layout_height="@dimen/xlarge_space"
+                android:layout_gravity="center"
+                android:background="@drawable/favourite_button"
+                android:button="@null"
+                android:checked="false"
+                android:layout_marginEnd="@dimen/space_14"
+                android:layout_marginTop="@dimen/space_14"
+                app:layout_constraintEnd_toEndOf="@+id/productCart"
+                app:layout_constraintTop_toTopOf="@+id/productCart" />
+
+
 
             <RelativeLayout
                 android:id="@+id/layoutName"
@@ -42,50 +65,93 @@
                 android:layout_margin="@dimen/large_space"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgProduct">
+                app:layout_constraintTop_toBottomOf="@+id/productCart">
 
-                <TextView
-                    style="@style/TextBold14"
-                    android:text="@{production.name}"
-                    tools:text="Arm Chair" />
-
-                <TextView
-                    style="@style/TextBold14"
-                    android:layout_alignParentEnd="true"
-                    android:text="@{String.valueOf(production.price)}"
-                    android:textColor="@color/primary"
-                    tools:text="$20.00" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        style="@style/TextBold14"
+                        android:text="@{production.name}"
+                        tools:text="Arm Chair"/>
+                </LinearLayout>
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/large_space"
-                android:layout_marginTop="@dimen/normal_space"
-                android:layout_marginBottom="@dimen/large_space"
-                android:gravity="center_vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layoutName">
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/TextBold14"
+                android:text="$"
+                android:textColor="@color/primary"
+                app:layout_constraintStart_toStartOf="@+id/layoutName"
+                app:layout_constraintTop_toTopOf="@+id/tvPrice" />
 
-                <TextView
-                    style="@style/TextBold14"
-                    android:text="@{String.valueOf(production.rating)}"
-                    tools:text="4.0" />
+            <TextView
+                android:id="@+id/tvPrice"
+                style="@style/TextBold26"
+                android:layout_alignParentEnd="true"
+                android:layout_marginVertical="@dimen/normal_space"
+                android:text="@{String.valueOf(Math.round(production.price - 0.5f))}"
+                android:textColor="@color/primary"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+                app:layout_constraintStart_toEndOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/layoutName"
+                tools:text="20" />
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/TextBold14"
+                android:text="."
+                android:textColor="@color/primary"
+                app:layout_constraintStart_toEndOf="@+id/tvPrice"
+                app:layout_constraintTop_toTopOf="@+id/tvPrice" />
+
+            <TextView
+                style="@style/TextBold14"
+                android:text="@{String.valueOf((production.price - Math.round(production.price - 0.5f)) * 100.1f).replace('.', '0')}"
+                android:textColor="@color/primary"
+                tools:text="99"
+                android:maxLength="2"
+                app:layout_constraintStart_toEndOf="@+id/textView6"
+                app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/large_space"
+                android:layout_marginVertical="@dimen/large_space"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
                 <RatingBar
                     style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/large_space"
                     android:numStars="5"
                     android:rating="@{production.rating}"
                     android:textColor="@color/primary" />
 
+                <TextView
+                    style="@style/TextBold14"
+                    android:layout_marginStart="@dimen/normal_space"
+                    android:text="@{String.valueOf(production.rating)}"
+                    android:textColor="@color/primary"
+                    tools:text="4.0" />
+
             </LinearLayout>
 
+            <ImageButton
+                android:id="@+id/btnAddToCart"
+                android:layout_width="@dimen/xlarge_space"
+                android:layout_height="@dimen/xlarge_space"
+                android:layout_marginStart="@dimen/space_14"
+                android:layout_marginTop="@dimen/space_14"
+                android:background="@drawable/bg_small_button"
+                android:src="@drawable/ic_add_cart"
+                app:layout_constraintStart_toStartOf="@+id/productCart"
+                app:layout_constraintTop_toTopOf="@+id/productCart" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>
