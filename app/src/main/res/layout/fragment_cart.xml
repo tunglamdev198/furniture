@@ -5,8 +5,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:id="@+id/empty_cart"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/space_160"
+                android:layout_height="@dimen/space_160"
+                android:background="@drawable/ic_cart_empty"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_cart"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"/>
+
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cartRecyclerView"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_cart"/>
@@ -14,6 +41,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_alignParentBottom="true">
             <LinearLayout
                 android:id="@+id/layout_price"
