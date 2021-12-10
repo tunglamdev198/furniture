@@ -338,7 +338,7 @@ fun MainActivity.changeTitle(@StringRes res: Int) {
     if (res == 0) {
         binding.txtTitle.gone()
     } else {
-        binding.txtTitle.visible()
+        binding.txtTitle.text = title
     }
 }
 
@@ -346,7 +346,7 @@ fun MainActivity.changeTitle(title: String) {
     if (title.isNullOrEmpty()) {
         binding.txtTitle.gone()
     } else {
-        binding.txtTitle.visible()
+        binding.txtTitle.text = title
     }
 }
 //
