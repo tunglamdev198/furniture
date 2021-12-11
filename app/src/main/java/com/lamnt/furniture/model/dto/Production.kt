@@ -14,4 +14,11 @@ data class Production(
     val description: String,
     val createdAt: Long,
     val updateAt: Long
-)
+){
+    fun getDecimalsPart(): String {
+        return ((price - price.toInt()) * 100.1f).toString().replace('.', '0')
+    }
+    fun getIntegerPart(): Int {
+        return price.toInt()
+    }
+}

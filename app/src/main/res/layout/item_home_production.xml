@@ -92,7 +92,7 @@
                 style="@style/TextBold26"
                 android:layout_alignParentEnd="true"
                 android:layout_marginVertical="@dimen/normal_space"
-                android:text="@{String.valueOf(Math.round(production.price - 0.5f))}"
+                android:text="@{String.valueOf(production.getIntegerPart())}"
                 android:textColor="@color/primary"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
                 app:layout_constraintStart_toEndOf="@+id/textView5"
@@ -109,7 +109,7 @@
 
             <TextView
                 style="@style/TextBold14"
-                android:text="@{String.valueOf((production.price - Math.round(production.price - 0.5f)) * 100.1f).replace('.', '0')}"
+                android:text="@{String.valueOf(production.getDecimalsPart())}"
                 android:textColor="@color/primary"
                 tools:text="99"
                 android:maxLength="2"
