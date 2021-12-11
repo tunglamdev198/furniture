@@ -14,22 +14,24 @@
         android:layout_height="match_parent">
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/ivProduct"
+                    loadImageUrl="@{production.image}"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/space_450"
                     android:scaleType="centerCrop"
-                    loadImageUrl="@{production.image}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -67,10 +69,10 @@
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/TextBold26"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@{production.name}"
-                            style="@style/TextBold26"
                             tools:text="Sample Title" />
 
                         <LinearLayout
@@ -117,54 +119,55 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
                     <TextView
+                        style="TextRegular18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/small_space"
                         android:text="$"
-                        android:textColor="@color/primary"
-                        style="TextRegular18" />
+                        android:textColor="@color/primary" />
 
                     <TextView
+                        style="TextRegular18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{String.valueOf(production.price)}"
                         android:textColor="@color/primary"
-                        style="TextRegular18"
                         tools:text="20.00" />
 
                     <TextView
                         android:id="@+id/tvQuantity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_14"
                         android:text="@{String.valueOf(production.quantity)}"
-                        tools:text="100"
-                        android:textStyle="italic|bold"
                         android:textSize="10sp"
-                        android:layout_marginStart="@dimen/space_14"/>
+                        android:textStyle="italic|bold"
+                        tools:text="100" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/small_space"
                         android:text="@string/products_left"
-                        android:textStyle="italic"
-                        android:textSize="10sp"/>
+                        android:textSize="10sp"
+                        android:textStyle="italic" />
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/textView4"
+                    style="@style/TextBold18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/space_14"
                     android:text="@string/description"
-                    style="@style/TextBold18"
                     app:layout_constraintStart_toStartOf="@+id/linearLayout4"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
                 <TextView
                     android:id="@+id/tvDescription"
+                    style="TextRegular14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="TextRegular14"
                     android:layout_marginHorizontal="@dimen/space_14"
                     android:layout_marginVertical="@dimen/space_14"
                     android:text="@{String.valueOf(production.description)}"
@@ -176,11 +179,11 @@
 
                 <TextView
                     android:id="@+id/textView3"
+                    style="@style/TextBold18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/space_14"
                     android:text="@string/more_variants"
-                    style="@style/TextBold18"
                     app:layout_constraintStart_toStartOf="@+id/textView4"
                     app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
@@ -200,6 +203,12 @@
 
         </ScrollView>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_80"
+            android:background="@drawable/bg_gradient"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAddToCart"
             android:layout_width="match_parent"
@@ -208,13 +217,11 @@
             android:backgroundTint="@color/primary"
             android:text="@string/add_cart"
             android:textColor="@color/white"
-            android:textSize="21sp"
-            android:textStyle="bold"
+            style="@style/TextBold20"
             android:layout_marginHorizontal="@dimen/space_14"
             android:layout_marginBottom="@dimen/space_14"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
