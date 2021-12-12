@@ -1,6 +1,7 @@
-package com.lamnt.furniture
+package com.lamnt.furniture.ui.activity
 
 import android.os.Bundle
+import com.lamnt.furniture.R
 import com.lamnt.furniture.databinding.ActivityMainBinding
 import com.lamnt.furniture.extensions.click
 import com.lamnt.furniture.extensions.replaceFragment

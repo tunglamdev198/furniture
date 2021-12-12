@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Furniture">
         <activity
             android:name=".ui.splash.SplashActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,16 +24,20 @@
         </activity>
 
         <activity
+            android:name=".ui.activity.intro.IntroActivity"
+            android:screenOrientation="fullSensor" />
+
+        <activity
             android:name=".ui.auth.AuthActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
 
         <activity
             android:name=".ui.forgot_password.ForgotPasswordActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
 
         <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait" />
+            android:name=".ui.activity.MainActivity"
+            android:screenOrientation="fullSensor" />
 
         <meta-data
             android:name="preloaded_fonts"

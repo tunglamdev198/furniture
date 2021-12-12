@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.lamnt.furniture.MainActivity
+import com.lamnt.furniture.ui.activity.MainActivity
 import com.lamnt.furniture.R
 import com.lamnt.furniture.extensions.changeStatusBarColor
 import com.lamnt.furniture.ui.custom.LoadingDialog

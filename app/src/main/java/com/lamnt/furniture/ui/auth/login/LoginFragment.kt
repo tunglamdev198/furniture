@@ -2,7 +2,7 @@ package com.lamnt.furniture.ui.auth.login
 
 import android.os.Bundle
 import com.lamnt.furniture.BuildConfig
-import com.lamnt.furniture.MainActivity
+import com.lamnt.furniture.ui.activity.MainActivity
 import com.lamnt.furniture.R
 import com.lamnt.furniture.databinding.FragmentLoginBinding
 import com.lamnt.furniture.extensions.*

@@ -8,7 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
-import com.lamnt.furniture.MainActivity
+import com.lamnt.furniture.ui.activity.MainActivity
 import com.lamnt.furniture.R
 import com.lamnt.furniture.extensions.changeStatusBarColor
 

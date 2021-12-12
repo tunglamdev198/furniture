@@ -11,7 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.lamnt.furniture.MainActivity
+import com.lamnt.furniture.ui.activity.MainActivity
 import com.lamnt.furniture.R
 import com.lamnt.furniture.extensions.navigateTo
 import com.lamnt.furniture.extensions.showInfo

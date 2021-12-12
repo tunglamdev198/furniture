@@ -1,11 +1,10 @@
 package com.lamnt.furniture.ui.main.cart
 
 import android.os.Bundle
-import com.lamnt.furniture.MainActivity
+import com.lamnt.furniture.ui.activity.MainActivity
 import com.lamnt.furniture.R
 import com.lamnt.furniture.databinding.FragmentCartBinding
 import com.lamnt.furniture.extensions.changeTitle
-import com.lamnt.furniture.extensions.handleLiveData
 import com.lamnt.furniture.extensions.setupHorizontal
 import com.lamnt.furniture.extensions.showBottomBar
 import com.lamnt.furniture.ui.base.BaseFragmentMVVM

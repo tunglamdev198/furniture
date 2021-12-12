@@ -18,12 +18,11 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.lamnt.furniture.MainActivity
+import com.lamnt.furniture.ui.activity.MainActivity
 import com.lamnt.furniture.R
 import com.lamnt.furniture.ui.base.Event
 import com.lamnt.furniture.ui.base.EventObserver
 import com.lamnt.furniture.utils.PermissionHelper
-import java.util.jar.Manifest
 
 /**
  * Replace Fragment with fade anim

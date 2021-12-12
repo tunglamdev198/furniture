@@ -2,7 +2,7 @@ package com.lamnt.furniture.ui.main.home
 
 import android.os.Bundle
 import android.view.View
-import com.lamnt.furniture.MainActivity
+import com.lamnt.furniture.ui.activity.MainActivity
 import com.lamnt.furniture.R
 import com.lamnt.furniture.databinding.FragmentHomeBinding
 import com.lamnt.furniture.extensions.*
