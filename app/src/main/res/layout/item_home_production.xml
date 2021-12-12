@@ -13,7 +13,7 @@
     <androidx.cardview.widget.CardView
         android:layout_marginVertical="@dimen/normal_space"
         android:layout_marginHorizontal="@dimen/normal_space"
-        android:layout_width="match_parent"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:elevation="@dimen/normal_space"
         android:padding="@dimen/large_space"
@@ -43,7 +43,7 @@
                     app:srcCompat="@drawable/sample_chair" />
             </androidx.cardview.widget.CardView>
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/btnFavourite"
                 android:layout_width="@dimen/xlarge_space"
                 android:layout_height="@dimen/xlarge_space"

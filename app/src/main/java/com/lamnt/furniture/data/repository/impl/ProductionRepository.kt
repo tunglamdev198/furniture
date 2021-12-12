@@ -5,4 +5,5 @@ import javax.inject.Inject
 
 class ProductionRepository @Inject constructor(private val productionDatasource: ProductionDatasource) {
     fun getHomeProductions() = productionDatasource.getHomeProductions()
+    fun getBanner() = productionDatasource.getBanner()
 }

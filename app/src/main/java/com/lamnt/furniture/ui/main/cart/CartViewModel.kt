@@ -7,6 +7,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 @HiltViewModel
-class CartViewModel  @Inject constructor(@ApplicationContext context: Context): BaseViewModel() {
+class CartViewModel @Inject constructor(@ApplicationContext private val context: Context) :
+    BaseViewModel() {
 
 }

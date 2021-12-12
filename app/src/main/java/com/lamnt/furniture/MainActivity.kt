@@ -15,16 +15,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun getLayoutId(): Int = R.layout.activity_main
 
     override fun onViewReady(savedInstance: Bundle?) {
-        replaceFragment(HomeFragment(),false)
+        replaceFragment(HomeFragment(), false)
         binding.mainBottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.mnuMain -> {
-                    replaceFragment(HomeFragment(), false);
+                    replaceFragment(HomeFragment(), false)
                     true
                 }
 
                 R.id.mnuCart -> {
-                    replaceFragment(CartFragment(), false);
+                    replaceFragment(CartFragment(), false)
                     true
                 }
 
@@ -40,6 +40,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.frameContainer)
+        if (currentFragment is CartFragment) {
+            binding.mainBottomNav.selectedItemId = R.id.mnuMain
+        } else {
+            super.onBackPressed()
+        }
     }
 }

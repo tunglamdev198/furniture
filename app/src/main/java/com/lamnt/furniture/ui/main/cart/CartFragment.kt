@@ -33,7 +33,7 @@ class CartFragment : BaseFragmentMVVM<FragmentCartBinding, CartViewModel>() {
         super.onResume()
 
         with((requireActivity() as MainActivity)) {
-            showBottomBar(false)
+            showBottomBar(true)
             changeTitle("Cart")
         }
 

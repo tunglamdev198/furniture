@@ -5,6 +5,7 @@ import com.lamnt.furniture.data.remote.Resource
 import com.lamnt.furniture.data.repository.impl.CategoryRepository
 import com.lamnt.furniture.data.repository.impl.ProductionRepository
 import com.lamnt.furniture.model.Category
+import com.lamnt.furniture.model.dto.Banner
 import com.lamnt.furniture.model.dto.Production
 import com.lamnt.furniture.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,6 +25,10 @@ class HomeViewModel @Inject constructor(
         MutableLiveData<List<Production>>()
     }
 
+    val banners by lazy {
+        MutableLiveData<List<Banner>>()
+    }
+
     fun getCategories() {
         loadApi(categoryRepository.getCategories()) {
             categories.value = it
@@ -32,5 +37,9 @@ class HomeViewModel @Inject constructor(
 
     fun getHomeProductions() {
         productions.value = productionRepository.getHomeProductions()
+    }
+
+    fun getBanners() {
+        banners.value = productionRepository.getBanner()
     }
 }

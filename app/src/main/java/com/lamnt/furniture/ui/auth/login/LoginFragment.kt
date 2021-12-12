@@ -57,10 +57,10 @@ class LoginFragment : BaseFragmentMVVM<FragmentLoginBinding, LoginViewModel>() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        with(requireActivity() as MainActivity){
-            changeTitle(R.string.title_home)
-        }
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        with(requireActivity() as MainActivity){
+//            changeTitle(R.string.title_home)
+//        }
+//    }
 }
