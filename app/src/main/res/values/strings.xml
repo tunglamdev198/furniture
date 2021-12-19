@@ -52,7 +52,11 @@
     <string name="more_variants">More variants</string>
     <string name="description">Description</string>
     <string name="products_left">Products left</string>
-    <string name="text_get_started">Get started</string>
+    <string name="order_history">Order History</string>
+    <string name="change_pass">Change Password</string>
+    <string name="about_us">About Us</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="privacy">Privacy Policy</string>
 
 
 </resources>

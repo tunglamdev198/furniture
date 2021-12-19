@@ -6,6 +6,7 @@ import com.lamnt.furniture.databinding.ActivityMainBinding
 import com.lamnt.furniture.extensions.click
 import com.lamnt.furniture.extensions.replaceFragment
 import com.lamnt.furniture.ui.base.BaseActivity
+import com.lamnt.furniture.ui.main.account.AccountFragment
 import com.lamnt.furniture.ui.main.cart.CartFragment
 import com.lamnt.furniture.ui.main.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,8 +30,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     true
                 }
 
-                R.id.mnuAccount ->
+                R.id.mnuAccount -> {
+                    replaceFragment(AccountFragment(), false)
                     true
+                }
 
                 else -> false
 
