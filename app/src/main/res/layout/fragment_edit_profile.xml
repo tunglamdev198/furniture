@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="user"
+            type="com.lamnt.furniture.model.dto.User" />
+    </data>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,9 +21,11 @@
             android:padding="@dimen/large_space">
 
             <com.makeramen.roundedimageview.RoundedImageView
+                loadImageUrl="@{user.avatar}"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_default_avatar"
                 app:riv_corner_radius="40dp" />
 
@@ -27,7 +36,8 @@
 
             <EditText
                 style="@style/NormalEditText"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:text="@{user.userName}" />
 
             <TextView
                 style="@style/TextBold12"
@@ -36,7 +46,8 @@
 
             <EditText
                 style="@style/NormalEditText"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:text="@{user.email}" />
 
             <TextView
                 style="@style/TextBold12"
@@ -45,7 +56,21 @@
 
             <EditText
                 style="@style/NormalEditText"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:text="@{user.phone}" />
+
+            <TextView
+                style="@style/TextBold12"
+                android:layout_marginTop="@dimen/large_space"
+                android:text="Birthday" />
+
+            <TextView
+                android:id="@+id/txtBirthday"
+                style="@style/NormalTextView"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:hint="Select birthday"
+                android:text="@{user.birthDay}" />
 
             <TextView
                 style="@style/TextBold12"
@@ -53,8 +78,12 @@
                 android:text="Address" />
 
             <TextView
-                style="@style/NormalEditText"
-                android:layout_width="match_parent" />
+                android:id="@+id/txtAddress"
+                style="@style/NormalTextView"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:hint="Select address"
+                android:text="@{user.address}" />
 
             <Button
                 android:id="@+id/btnUpdate"

@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="user"
+            type="com.lamnt.furniture.model.dto.User" />
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -47,10 +54,12 @@
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/imgAvatar"
+                    loadImageUrl="@{user.avatar}"
                     android:layout_width="@dimen/space_80"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/space_14"
-                    android:background="@drawable/ic_default_avatar"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_default_avatar"
                     app:riv_corner_radius="40dp" />
 
                 <LinearLayout
@@ -66,14 +75,14 @@
                         style="@style/TextBold20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Your name" />
+                        android:text="@{user.userName}" />
 
                     <TextView
                         android:id="@+id/tvEmail"
                         style="@style/TextRegular14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="yourmail@gmail.com" />
+                        android:text="@{user.email}" />
                 </LinearLayout>
 
                 <TextView

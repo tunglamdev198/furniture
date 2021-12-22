@@ -31,16 +31,22 @@ class AccountFragment : BaseFragmentMVVM<FragmentAccountBinding, AccountViewMode
             }
         }
 
-        binding.btnEdit.click { replaceFragment(EditAccountFragment(),true) }
+        binding.btnEdit.click {
+            replaceFragment(EditAccountFragment(), true)
+        }
     }
 
     override fun initSubscriber() {
-
+        observeData(viewModel.user) {
+            it?.let {
+                binding.user = it
+                shareViewModel.user.value = it
+            }
+        }
     }
 
     override fun onResume() {
         super.onResume()
-
         with((requireActivity() as MainActivity)) {
             showBottomBar(true)
             changeTitle("My Account")

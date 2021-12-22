@@ -29,6 +29,7 @@ fun <T, F : BaseFragmentMVVM<*, *>> F.handleLiveData(
             }
 
             Resource.Status.TOKEN_EXPIRED -> {
+                hideLoading()
                 showAlert(
                     getString(R.string.app_name),
                     getString(R.string.msg_token_expired),

@@ -6,7 +6,6 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.google.gson.TypeAdapter
-import com.lamnt.furniture.App
 import com.lamnt.furniture.data.remote.DataResponse
 import com.lamnt.furniture.data.remote.Resource
 import com.lamnt.furniture.extensions.io
@@ -52,7 +51,9 @@ open class BaseViewModel : ViewModel() {
             }.io().subscribe({
                 handleResponse(it, onResult)
             }, { throwable ->
-                handleNetworkError(throwable)
+                handleNetworkError(throwable){
+                    onResult(Resource.error(it ?: "Has error"))
+                }
             })
         )
     }
@@ -63,7 +64,7 @@ open class BaseViewModel : ViewModel() {
      * @return failure throwable
      */
 
-    protected fun handleNetworkError(throwable: Throwable?) {
+    protected fun handleNetworkError(throwable: Throwable?, onError: (message : String?) -> Unit) {
         if (throwable is HttpException) {
             if (throwable.code() == Constants.CODE_401
                 || throwable.code() == Constants.CODE_402
@@ -73,7 +74,7 @@ open class BaseViewModel : ViewModel() {
                     tokenExpired.value = true
                 }
             } else if (throwable.code() == Constants.CODE_500) {
-                message.postValue("Error")
+                onError("Error")
             } else {
                 throwable.response()?.errorBody()?.let {
                     val adapter: TypeAdapter<Error> =
@@ -81,18 +82,18 @@ open class BaseViewModel : ViewModel() {
                     try {
                         val error: Error? = adapter.fromJson(it.string())
                         if (error != null) {
-                            message.postValue(error.message)
+                            onError(error.message)
                         }
                     } catch (e: IOException) {
                         e.printStackTrace()
-                        message.postValue(e.message)
+                        onError(e.message)
                     }
                 } ?: run {
-                    message.postValue("Error")
+                    onError("Error")
                 }
             }
         } else {
-            message.postValue(throwable?.message ?: "Error")
+            onError(throwable?.message ?: "Error")
         }
     }
 
@@ -127,7 +128,7 @@ open class BaseViewModel : ViewModel() {
         response: DataResponse<T>,
         onResult: (resource: Resource<T>) -> Unit,
     ) {
-        if (response.status == 0) {
+        if (response.status == "0") {
             response.data?.let { data ->
                 onResult(Resource.success(data))
             }
@@ -148,7 +149,7 @@ open class BaseViewModel : ViewModel() {
         onSuccess: (t: T) -> Unit,
         onError: () -> Unit
     ) {
-        if (response.status == 0) {
+        if (response.status == "0") {
             response.data?.let { data ->
                 onSuccess(data)
             } ?: run {

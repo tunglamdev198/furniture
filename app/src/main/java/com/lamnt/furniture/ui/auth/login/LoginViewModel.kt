@@ -3,8 +3,12 @@ package com.lamnt.furniture.ui.auth.login
 import android.annotation.SuppressLint
 import android.content.Context
 import android.text.TextUtils
+import androidx.lifecycle.MutableLiveData
 import com.lamnt.furniture.R
 import com.lamnt.furniture.data.local.PreferenceRepository
+import com.lamnt.furniture.data.remote.Resource
+import com.lamnt.furniture.data.repository.impl.UserRepository
+import com.lamnt.furniture.model.dto.User
 import com.lamnt.furniture.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -14,9 +18,13 @@ import javax.inject.Inject
 @SuppressLint("StaticFieldLeak")
 class LoginViewModel @Inject constructor(
     @ApplicationContext private val mContext: Context,
-    private val preferenceRepository: PreferenceRepository
+    private val preferenceRepository: PreferenceRepository,
+    private val userRepository: UserRepository
 ) :
     BaseViewModel() {
+    val userSource by lazy {
+        MutableLiveData<Resource<User>>()
+    }
 
     fun validateUsername(username: String): Boolean {
         if (TextUtils.isEmpty(username)) {
@@ -61,8 +69,15 @@ class LoginViewModel @Inject constructor(
         return true
     }
 
-    fun login(username: String, password: String, success: () -> Unit) {
-        preferenceRepository.saveToken("abc")
+    fun login(username: String, password: String) {
+        loadApi(userRepository.login(username, password)) {
+            userSource.postValue(it)
+        }
+    }
+
+    fun handleLogin(user: User, success: () -> Unit) {
+        preferenceRepository.saveToken(user.token)
+        preferenceRepository.saveUser(user)
         success()
     }
 

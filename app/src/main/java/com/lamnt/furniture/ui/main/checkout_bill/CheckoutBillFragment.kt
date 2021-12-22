@@ -6,6 +6,7 @@ import com.lamnt.furniture.databinding.LayoutCheckoutBillBinding
 import com.lamnt.furniture.extensions.*
 import com.lamnt.furniture.ui.activity.MainActivity
 import com.lamnt.furniture.ui.base.BaseFragmentMVVM
+import com.lamnt.furniture.ui.main.account.EditAccountFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,12 +25,20 @@ class CheckoutBillFragment : BaseFragmentMVVM<LayoutCheckoutBillBinding, Checkou
         binding.rvProductions.setupVertical(productionCheckoutAdapter)
         viewModel.getAllProduction()
         binding.btnProceed.click { replaceFragment(CheckoutSucceedFragment(), false) }
+        binding.btnEditDeliveryInfo.click {
+            replaceFragment(EditAccountFragment(), true)
+        }
     }
 
     override fun initSubscriber() {
         observeData(viewModel.productions) {
             productionCheckoutAdapter.notifyDataChanged(it)
             calculatePrice()
+        }
+
+        viewModel.user.value?.let {
+            shareViewModel.user.value = it
+            binding.user = it
         }
     }
 
