@@ -1,170 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="@dimen/space_14"
-        android:layout_marginTop="@dimen/space_14">
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/space_80"
-            android:orientation="horizontal"
-            android:layout_marginBottom="@dimen/small_space">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivAvatar"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/ic_default_avatar"
-                android:layout_marginEnd="@dimen/space_14"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
-                <TextView
-                    android:id="@+id/tvName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="Your name"
-                    style="@style/TextBold26"/>
-                <TextView
-                    android:id="@+id/tvEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="yourmail@gmail.com"
-                    style="@style/TextRegular14"/>
-            </LinearLayout>
-
-        </LinearLayout>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvOrderHistory"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/space_56"
-            android:layout_marginVertical="@dimen/small_space">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="@dimen/space_30"
-                    android:layout_height="@dimen/space_30"
-                    android:background="@drawable/ic_order_history"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="@dimen/space_14"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/order_history"
-                    style="@style/TextBold18"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvChangePassword"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/space_56"
-            android:layout_marginVertical="@dimen/small_space">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="@dimen/space_30"
-                    android:layout_height="@dimen/space_30"
-                    android:background="@drawable/ic_reset_pass"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="@dimen/space_14"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/change_pass"
-                    style="@style/TextBold18"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-        <TextView
+            android:id="@+id/layoutLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quick Link"
-            style="@style/TextRegular16"
-            android:layout_marginVertical="@dimen/normal_space"/>
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvAboutUs"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextBold18"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/xlarge_space"
+                android:text="Please login to access your account" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                style="@style/BlueButton"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/xlarge_space"
+                android:text="@string/text_login" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutAccount"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/space_56"
-            android:layout_marginVertical="@dimen/small_space">
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/space_14"
+            android:layout_marginTop="@dimen/space_14"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_80"
+                android:layout_marginBottom="@dimen/small_space"
+                android:orientation="horizontal">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/imgAvatar"
+                    android:layout_width="@dimen/space_80"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/space_14"
+                    android:background="@drawable/ic_default_avatar"
+                    app:riv_corner_radius="40dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_toEndOf="@+id/imgAvatar"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        style="@style/TextBold20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Your name" />
+
+                    <TextView
+                        android:id="@+id/tvEmail"
+                        style="@style/TextRegular14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="yourmail@gmail.com" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnEdit"
+                    style="@style/TextBold14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/large_space"
+                    android:drawablePadding="@dimen/normal_space"
+                    android:padding="@dimen/normal_space"
+                    android:text="Edit"
+                    app:drawableStartCompat="@drawable/ic_baseline_edit_24" />
+
+            </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/space_56"
                 android:orientation="horizontal">
+
                 <ImageView
-                    android:layout_width="@dimen/space_30"
-                    android:layout_height="@dimen/space_30"
-                    android:background="@drawable/ic_about_us"
+                    android:layout_width="@dimen/normal_icon_size"
+                    android:layout_height="@dimen/normal_icon_size"
                     android:layout_gravity="center"
-                    android:layout_marginEnd="@dimen/space_14"/>
+                    android:layout_marginStart="@dimen/normal_space"
+                    android:layout_marginEnd="@dimen/space_14"
+                    android:background="@drawable/ic_order_history" />
+
                 <TextView
+                    style="@style/TextBold14"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="@string/about_us"
-                    style="@style/TextBold18"/>
+                    android:text="@string/order_history" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvContactUs"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/space_56"
-            android:layout_marginVertical="@dimen/small_space">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/space_56"
                 android:orientation="horizontal">
+
                 <ImageView
-                    android:layout_width="@dimen/space_30"
-                    android:layout_height="@dimen/space_30"
-                    android:background="@drawable/ic_contact_us"
+                    android:layout_width="@dimen/normal_icon_size"
+                    android:layout_height="@dimen/normal_icon_size"
                     android:layout_gravity="center"
-                    android:layout_marginEnd="@dimen/space_14"/>
+                    android:layout_marginStart="@dimen/normal_space"
+                    android:layout_marginEnd="@dimen/space_14"
+                    android:background="@drawable/ic_reset_pass" />
+
                 <TextView
+                    style="@style/TextBold14"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="@string/contact_us"
-                    style="@style/TextBold18"/>
+                    android:text="@string/change_pass" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvPrivacy"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/space_56"
-            android:layout_marginVertical="@dimen/small_space">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray" />
+
+            <TextView
+                style="@style/TextRegular16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/normal_space"
+                android:text="Quick Link" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/space_56"
                 android:orientation="horizontal">
+
                 <ImageView
-                    android:layout_width="@dimen/space_30"
-                    android:layout_height="@dimen/space_30"
-                    android:background="@drawable/ic_privacy"
+                    android:layout_width="@dimen/normal_icon_size"
+                    android:layout_height="@dimen/normal_icon_size"
                     android:layout_gravity="center"
-                    android:layout_marginEnd="@dimen/space_14"/>
+                    android:layout_marginStart="@dimen/normal_space"
+                    android:layout_marginEnd="@dimen/space_14"
+                    android:background="@drawable/ic_about_us" />
+
                 <TextView
+                    style="@style/TextBold14"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="@string/privacy"
-                    style="@style/TextBold18"/>
+                    android:text="@string/about_us" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_56"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/normal_icon_size"
+                    android:layout_height="@dimen/normal_icon_size"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/normal_space"
+                    android:layout_marginEnd="@dimen/space_14"
+                    android:background="@drawable/ic_contact_us" />
+
+                <TextView
+                    style="@style/TextBold14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/contact_us" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_56"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/normal_icon_size"
+                    android:layout_height="@dimen/normal_icon_size"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/normal_space"
+                    android:layout_marginEnd="@dimen/space_14"
+                    android:background="@drawable/ic_privacy" />
+
+                <TextView
+                    style="@style/TextBold14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/privacy" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray" />
+
+            <LinearLayout
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_56"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/normal_icon_size"
+                    android:layout_height="@dimen/normal_icon_size"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/normal_space"
+                    android:layout_marginEnd="@dimen/space_14"
+                    android:background="@drawable/ic_log_out" />
+
+                <TextView
+                    style="@style/TextBold14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Log out" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray" />
+
+        </LinearLayout>
+    </RelativeLayout>
 </layout>

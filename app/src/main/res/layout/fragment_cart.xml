@@ -1,171 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <RelativeLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/empty_cart"
-            android:visibility="visible"
+            android:id="@+id/emptyCart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:gravity="center">
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible">
 
             <ImageView
                 android:layout_width="@dimen/space_160"
                 android:layout_height="@dimen/space_160"
-                android:background="@drawable/ic_cart_empty"/>
+                android:background="@drawable/ic_cart_empty" />
 
             <TextView
+                style="@style/TextBold20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/empty_cart"
-                style="@style/TextBold20"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"/>
+                android:text="@string/empty_cart" />
 
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cartRecyclerView"
-            android:visibility="gone"
+        <RelativeLayout
+            android:id="@+id/layoutProduction"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_cart"/>
+            android:visibility="gone">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_alignParentBottom="true">
-            <LinearLayout
-                android:id="@+id/layout_price"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cartRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/normal_space">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/normal_space">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Item total"
-                        android:layout_weight="1"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="$"
-                                android:textSize="16sp"
-                                android:textStyle="bold"/>
-                            <TextView
-                                android:id="@+id/tvItemTotal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textSize="16sp"
-                                android:textStyle="bold"/>
-                    </LinearLayout>
+                android:layout_height="match_parent"
+                android:layout_above="@+id/btnCheckOut"
+                android:visibility="visible"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_cart" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/normal_space">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Delivery Services"
-                        android:layout_weight="1"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="$"
-                            android:textSize="16sp"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:id="@+id/tvDeliveryPrice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textSize="16sp"
-                            android:textStyle="bold"/>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/normal_space">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Total Price"
-                            android:textSize="21sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/primary"/>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="$"
-                                android:textSize="21sp"
-                                android:textStyle="bold"/>
-                            <TextView
-                                android:id="@+id/tvTotalPrice"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textSize="21sp"
-                                android:textStyle="bold"/>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnCheckout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Check out"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:padding="@dimen/normal_space"
-                        android:textColor="@color/white"
-                        android:background="@drawable/bg_small_button"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+            <Button
+                android:id="@+id/btnCheckOut"
+                style="@style/BlueButton"
+                android:layout_alignParentBottom="true"
+                android:layout_marginHorizontal="@dimen/large_space"
+                android:layout_marginTop="@dimen/large_space"
+                android:layout_marginBottom="@dimen/xlarge_space"
+                android:text="Check out" />
+        </RelativeLayout>
 
     </RelativeLayout>
 </layout>

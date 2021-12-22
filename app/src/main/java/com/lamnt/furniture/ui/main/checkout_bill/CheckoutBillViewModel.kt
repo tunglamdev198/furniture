@@ -1,4 +1,4 @@
-package com.lamnt.furniture.ui.main.cart
+package com.lamnt.furniture.ui.main.checkout_bill
 
 import androidx.lifecycle.MutableLiveData
 import com.lamnt.furniture.data.database.dao.ProductionDao
@@ -8,7 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class CartViewModel @Inject constructor(private val productionDao: ProductionDao) :
+class CheckoutBillViewModel @Inject constructor(private val productionDao: ProductionDao) :
     BaseViewModel() {
     val productions by lazy {
         MutableLiveData<List<ProductionEntity>>()
@@ -16,13 +16,5 @@ class CartViewModel @Inject constructor(private val productionDao: ProductionDao
 
     fun getAllProduction() {
         productions.value = productionDao.getAllProduction()
-    }
-
-    fun updateAmount(id: Int, amount: Int) {
-        productionDao.updateAmount(id, amount)
-    }
-
-    fun removeProduction(id: Int) {
-        productionDao.removeProduction(id)
     }
 }

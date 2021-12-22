@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.text.TextUtils
 import com.lamnt.furniture.R
+import com.lamnt.furniture.data.local.PreferenceRepository
 import com.lamnt.furniture.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -11,7 +12,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 @SuppressLint("StaticFieldLeak")
-class LoginViewModel @Inject constructor(@ApplicationContext private val mContext: Context) :
+class LoginViewModel @Inject constructor(
+    @ApplicationContext private val mContext: Context,
+    private val preferenceRepository: PreferenceRepository
+) :
     BaseViewModel() {
 
     fun validateUsername(username: String): Boolean {
@@ -55,6 +59,11 @@ class LoginViewModel @Inject constructor(@ApplicationContext private val mContex
         }
 
         return true
+    }
+
+    fun login(username: String, password: String, success: () -> Unit) {
+        preferenceRepository.saveToken("abc")
+        success()
     }
 
 }

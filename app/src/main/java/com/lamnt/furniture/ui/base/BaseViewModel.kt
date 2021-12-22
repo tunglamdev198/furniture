@@ -6,6 +6,7 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.google.gson.TypeAdapter
+import com.lamnt.furniture.App
 import com.lamnt.furniture.data.remote.DataResponse
 import com.lamnt.furniture.data.remote.Resource
 import com.lamnt.furniture.extensions.io

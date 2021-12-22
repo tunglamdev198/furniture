@@ -45,7 +45,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onBackPressed() {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.frameContainer)
-        if (currentFragment is CartFragment) {
+        if (currentFragment is CartFragment
+            || currentFragment is AccountFragment
+        ) {
             binding.mainBottomNav.selectedItemId = R.id.mnuMain
         } else {
             super.onBackPressed()

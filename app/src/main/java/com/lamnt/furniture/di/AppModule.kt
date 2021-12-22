@@ -1,15 +1,21 @@
 package com.lamnt.furniture.di
 
+import android.content.Context
+import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.lamnt.furniture.data.database.FurnitureDatabase
+import com.lamnt.furniture.data.local.PreferenceRepository
 import com.lamnt.furniture.data.remote.ApiService
 import com.lamnt.furniture.data.remote.datasouce.CategoryDataSource
+import com.lamnt.furniture.data.remote.datasouce.PreferenceDatasource
 import com.lamnt.furniture.data.remote.datasouce.ProductionDatasource
 import com.lamnt.furniture.data.repository.impl.CategoryRepository
 import com.lamnt.furniture.data.repository.impl.ProductionRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -24,6 +30,26 @@ object AppModule {
         .baseUrl("https://rickandmortyapi.com/api/")
         .addConverterFactory(GsonConverterFactory.create(gSon))
         .build()
+
+    @Provides
+    @Singleton
+    fun provideDatabase(@ApplicationContext context: Context): FurnitureDatabase =
+        Room.databaseBuilder(context, FurnitureDatabase::class.java, "furniture")
+            .allowMainThreadQueries().fallbackToDestructiveMigration().build()
+
+    @Provides
+    @Singleton
+    fun provideProductionDao(database: FurnitureDatabase) = database.getProductionDao()
+
+    @Provides
+    @Singleton
+    fun providePreferenceDatasource(@ApplicationContext context: Context) =
+        PreferenceDatasource(context)
+
+    @Provides
+    @Singleton
+    fun providePreferenceRepository(dataSource: PreferenceDatasource) =
+        PreferenceRepository(dataSource)
 
     @Provides
     fun provideGSon(): Gson = GsonBuilder().create()

@@ -7,7 +7,7 @@ import com.lamnt.furniture.extensions.click
 import com.lamnt.furniture.extensions.navigateTo
 import com.lamnt.furniture.extensions.setUpTabLayout
 import com.lamnt.furniture.model.dto.IntroItem
-import com.lamnt.furniture.ui.auth.AuthActivity
+import com.lamnt.furniture.ui.activity.MainActivity
 import com.lamnt.furniture.ui.base.BaseActivity
 
 class IntroActivity : BaseActivity<ActivityIntroBinding>() {
@@ -20,7 +20,7 @@ class IntroActivity : BaseActivity<ActivityIntroBinding>() {
 
     override fun onViewReady(savedInstance: Bundle?) {
         configViewPager()
-        binding.btnGetStarted.click { navigateTo(AuthActivity::class.java, null, true) }
+        binding.btnGetStarted.click { navigateTo(MainActivity::class.java, null, true) }
     }
 
     private fun configViewPager() {

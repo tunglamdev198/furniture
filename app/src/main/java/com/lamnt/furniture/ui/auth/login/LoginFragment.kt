@@ -21,7 +21,7 @@ class LoginFragment : BaseFragmentMVVM<FragmentLoginBinding, LoginViewModel>() {
         if (BuildConfig.DEBUG) {
             binding.edtUsername.setText("lamnt98")
             binding.edtPassword.setText("Lam@12345")
-            postDelay(1000) { login() }
+//            postDelay(1000) { login() }
         }
         binding.btnSignIn.click {
             login()
@@ -40,8 +40,10 @@ class LoginFragment : BaseFragmentMVVM<FragmentLoginBinding, LoginViewModel>() {
         val password = binding.edtPassword.toText()
 
         if (viewModel.validateUsername(username) && viewModel.validatePassword(password)) {
-            requireActivity().navigateTo(MainActivity::class.java, true)
-            showInfo(getString(R.string.login_success))
+            viewModel.login(username,password){
+                requireActivity().navigateTo(MainActivity::class.java, true)
+                showInfo(getString(R.string.login_success))
+            }
         }
     }
 
