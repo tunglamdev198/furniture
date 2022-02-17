@@ -24,6 +24,14 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
+    <style name="TextRegular" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
     <style name="TextBold10" parent="TextBold">
         <item name="android:textSize">10sp</item>
     </style>
@@ -40,8 +48,103 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="TextBold18" parent="TextBold">
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="TextBold20" parent="TextBold">
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="TextBold26" parent="TextBold">
+        <item name="android:textSize">26sp</item>
+    </style>
+
+    <style name="TextBold32" parent="TextBold">
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="TextRegular10" parent="TextRegular">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextRegular12" parent="TextRegular">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextRegular14" parent="TextRegular">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextRegular16" parent="TextRegular">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextRegular18" parent="TextRegular">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextRegular20" parent="TextRegular">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="NormalTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/normal_edit_text_height</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="backgroundTint">@color/gray</item>
+        <item name="android:drawablePadding">@dimen/space_12</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!--    Edit Text-->
+    <style name="NormalEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/normal_edit_text_height</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="backgroundTint">@color/gray</item>
+        <item name="android:drawablePadding">@dimen/space_12</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="OTPBox" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_enter_pin</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:inputType">number</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLength">1</item>
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!--    Button-->
+
+    <style name="BlueButton" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/normal_button_height</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:drawablePadding">@dimen/space_12</item>
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="FavouriteRadio" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/favourite_button</item>
+    </style>
 </resources>

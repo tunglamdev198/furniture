@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/emptyCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_width="@dimen/space_160"
+                android:layout_height="@dimen/space_160"
+                android:background="@drawable/ic_cart_empty" />
+
+            <TextView
+                style="@style/TextBold20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_cart" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/layoutProduction"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cartRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/btnCheckOut"
+                android:visibility="visible"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_cart" />
+
+            <Button
+                android:id="@+id/btnCheckOut"
+                style="@style/BlueButton"
+                android:layout_alignParentBottom="true"
+                android:layout_marginHorizontal="@dimen/large_space"
+                android:layout_marginTop="@dimen/large_space"
+                android:layout_marginBottom="@dimen/xlarge_space"
+                android:text="Check out" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

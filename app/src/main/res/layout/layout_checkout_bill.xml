@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.lamnt.furniture.model.dto.User" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/large_space">
+
+            <TextView
+                style="@style/TextBold14"
+                android:text="Productions"
+                android:textColor="@color/primary" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProductions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/normal_space"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_product_checkout" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_space"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    style="@style/TextBold14"
+                    android:text="Delivery Info"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    android:id="@+id/btnEditDeliveryInfo"
+                    style="@style/TextBold12"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="Edit" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/TextBold12"
+                android:layout_marginTop="@dimen/normal_space"
+                android:text="@{user.userName}" />
+
+            <TextView
+                style="@style/TextRegular12"
+                android:layout_marginTop="@dimen/small_space"
+                android:text="@{user.phone}" />
+
+            <TextView
+                style="@style/TextRegular12"
+                android:layout_marginTop="@dimen/small_space"
+                android:text="@{user.address}" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_space"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    style="@style/TextBold14"
+                    android:text="Payment Method"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    style="@style/TextBold12"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="Payment on delivery" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_space"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextBold14"
+                    android:text="Price" />
+
+                <TextView
+                    android:id="@+id/txtTotalPrice"
+                    style="@style/TextBold12"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="100.00$" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal_space"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextBold14"
+                    android:text="Delivery Price" />
+
+                <TextView
+                    style="@style/TextBold12"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="10.00$" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal_space"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextBold14"
+                    android:text="Discount" />
+
+                <TextView
+                    style="@style/TextBold12"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="-10.00$"
+                    android:textColor="@color/primary" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/btnChangeDiscount"
+                style="@style/BlueButton"
+                android:layout_marginTop="@dimen/normal_space"
+                android:text="Change Discount"
+                android:textAppearance="@style/TextBold12"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnProceed"
+                style="@style/BlueButton"
+                android:layout_marginTop="@dimen/xlarge_space"
+                android:text="Proceed"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

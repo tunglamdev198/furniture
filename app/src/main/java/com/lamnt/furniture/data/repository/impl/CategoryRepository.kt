@@ -5,5 +5,5 @@ import com.lamnt.furniture.utils.performGetOperation
 import javax.inject.Inject
 
 class CategoryRepository @Inject constructor(private val categoryDataSource: CategoryDataSource) {
-    fun getCategories() = performGetOperation { categoryDataSource.getCategories() }
+    fun getCategories() = categoryDataSource.getCategories()
 }

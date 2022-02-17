@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="production"
+            type="com.lamnt.furniture.data.database.entities.ProductionEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp">
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/ivProduct"
+            loadImageUrl="@{production.image}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="@dimen/normal_space"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_border_color="@color/gray"
+            app:riv_border_width="0.5dp"
+            app:riv_corner_radius="@dimen/normal_space"
+            tools:src="@drawable/sample_chair" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/TextBold14"
+            android:layout_marginHorizontal="@dimen/space_14"
+            android:text="@{production.name}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivProduct"
+            app:layout_constraintTop_toTopOf="@+id/ivProduct"
+            tools:text="Sample Title" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            style="@style/TextRegular14"
+            android:text="@{String.valueOf(production.price)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTitle"
+            tools:text="20.00" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/TextRegular16"
+            android:layout_marginEnd="@dimen/small_space"
+            android:text="$"
+            android:textColor="@color/primary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPrice"
+            app:layout_constraintEnd_toStartOf="@+id/tvPrice"
+            app:layout_constraintTop_toTopOf="@+id/tvPrice" />
+
+        <TextView
+            android:id="@+id/txtNote"
+            style="@style/TextRegular14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/large_space"
+            android:layout_marginTop="@dimen/normal_space"
+            android:layout_marginBottom="@dimen/normal_space"
+            android:background="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txtQuantity"
+            app:layout_constraintStart_toEndOf="@+id/ivProduct"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <TextView
+            android:id="@+id/txtQuantity"
+            style="@style/TextRegular12"
+            android:text="@{String.valueOf(production.amount)}"
+            app:layout_constraintBottom_toBottomOf="@+id/txtNote"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

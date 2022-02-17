@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="production"
+            type="com.lamnt.furniture.data.database.entities.ProductionEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp">
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/ivProduct"
+            loadImageUrl="@{production.image}"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginVertical="@dimen/large_space"
+            android:layout_marginStart="@dimen/large_space"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_border_color="@color/gray"
+            app:riv_border_width="0.5dp"
+            app:riv_corner_radius="@dimen/normal_space"
+            app:srcCompat="@drawable/sample_chair" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/TextBold18"
+            android:layout_marginHorizontal="@dimen/space_14"
+            android:text="@{production.name}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivProduct"
+            app:layout_constraintTop_toTopOf="@+id/ivProduct"
+            tools:text="Sample Title" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_minus"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/space_14"
+            android:background="@drawable/bg_smaller_button"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="-"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivProduct"
+            app:layout_constraintStart_toEndOf="@+id/ivProduct" />
+
+        <TextView
+            android:id="@+id/tvQuantity"
+            style="@style/TextBold14"
+            android:maxLength="2"
+            android:text="@{String.valueOf(production.amount)}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_minus"
+            app:layout_constraintEnd_toStartOf="@+id/btn_plus"
+            app:layout_constraintStart_toEndOf="@+id/btn_minus"
+            app:layout_constraintTop_toTopOf="@+id/btn_minus" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_plus"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/big_space"
+            android:background="@drawable/bg_smaller_button"
+            android:includeFontPadding="false"
+            android:text="+"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_minus"
+            app:layout_constraintStart_toEndOf="@+id/btn_minus"
+            app:layout_constraintTop_toTopOf="@+id/btn_minus" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            style="@style/TextRegular16"
+            android:layout_marginEnd="@dimen/space_10"
+            android:text="@{String.valueOf(production.price)}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTitle"
+            tools:text="20.00" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/TextRegular16"
+            android:layout_marginEnd="@dimen/small_space"
+            android:text="$"
+            android:textColor="@color/primary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPrice"
+            app:layout_constraintEnd_toStartOf="@+id/tvPrice"
+            app:layout_constraintTop_toTopOf="@+id/tvPrice" />
+
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            style="@style/TextBold16"
+            android:layout_marginEnd="@dimen/space_10"
+            android:text="0"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_plus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_plus" />
+
+        <TextView
+            style="@style/TextBold16"
+            android:layout_marginEnd="@dimen/small_space"
+            android:text="$"
+            android:textColor="@color/primary"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTotalPrice"
+            app:layout_constraintEnd_toStartOf="@+id/tvTotalPrice"
+            app:layout_constraintTop_toTopOf="@+id/tvTotalPrice" />
+
+        <EditText
+            style="@style/TextRegular14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/large_space"
+            android:background="@null"
+            android:hint="Note....."
+            app:layout_constraintBottom_toTopOf="@+id/tvQuantity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivProduct"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

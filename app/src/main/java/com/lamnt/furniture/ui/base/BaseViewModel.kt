@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.google.gson.TypeAdapter
 import com.lamnt.furniture.data.remote.DataResponse
-import com.lamnt.furniture.data.remote.Response
+import com.lamnt.furniture.data.remote.Resource
 import com.lamnt.furniture.extensions.io
 import com.lamnt.furniture.utils.Constants
 import io.reactivex.rxjava3.core.Single
@@ -39,240 +39,24 @@ open class BaseViewModel : ViewModel() {
     }
 
     /**
-     * Load API from server return token, data response
-     */
-    protected fun <T> loadApi(
-        source: Single<DataResponse<T>>,
-        onSuccess: (t: T) -> Unit,
-        returnToken: (token: String) -> Unit
-    ) {
-        addDispose(
-            source.doOnSubscribe {
-                loading.postValue(true)
-            }.doOnTerminate {
-                loading.postValue(false)
-            }.io().subscribe({
-                it?.let { response ->
-                    response.token?.run {
-                        returnToken(this)
-                    }
-                    handleResponse(response, onSuccess, {})
-                }
-            }, { throwable ->
-                handleNetworkError(throwable)
-            })
-        )
-    }
-
-//    /**
-//     * Load API from server return page, data response
-//     */
-//    protected fun <T> loadApiPaging(
-//        source: Single<DataResponse<T>>,
-//        onSuccess: (t: T) -> Unit,
-//        returnPage: (allPage: Int) -> Unit
-//    ) {
-//        addDispose(
-//            source.doOnSubscribe {
-//                loading.postValue(true)
-//            }.doOnTerminate {
-//                loading.postValue(false)
-//            }.io().subscribe({
-//                it?.let { response ->
-//                    response.allCount?.run {
-//                        returnPage(this)
-//                    }
-//                    handleResponse(response, onSuccess, {})
-//                }
-//            }, { throwable ->
-//                handleNetworkError(throwable)
-//            })
-//        )
-//    }
-
-    /**
      * Load API from server
      */
     protected fun <T> loadApi(
         source: Single<DataResponse<T>>,
-        onSuccess: (t: T) -> Unit
+        onResult: (resource: Resource<T>) -> Unit
     ) {
         addDispose(
             source.doOnSubscribe {
-                loading.postValue(true)
-            }.doOnTerminate {
-                loading.postValue(false)
+                onResult(Resource.loading(null))
             }.io().subscribe({
-                it?.let { response ->
-                    handleResponse(response, onSuccess, {})
-                }
+                handleResponse(it, onResult)
             }, { throwable ->
-                handleNetworkError(throwable)
-            })
-        )
-    }
-
-    /**
-     * Load API from server return data response
-     */
-    protected fun <T> loadApi(
-        source: Single<DataResponse<T>>,
-        onSuccess: (t: T) -> Unit,
-        onError: () -> Unit
-    ) {
-        addDispose(
-            source.doOnSubscribe {
-                loading.postValue(true)
-            }.doOnTerminate {
-                loading.postValue(false)
-            }.io().subscribe({
-                it?.let { response ->
-                    handleResponse(response, onSuccess, onError)
+                handleNetworkError(throwable){
+                    onResult(Resource.error(it ?: "Has error"))
                 }
-            }, { throwable ->
-                onError()
-                handleNetworkError(throwable)
             })
         )
     }
-
-    /**
-     * Load API from server
-     */
-    protected fun loadApi(
-        source: Single<Response>,
-        onSuccess: () -> Unit
-    ) {
-        addDispose(
-            source.doOnSubscribe {
-                loading.postValue(true)
-            }.doOnTerminate {
-                loading.postValue(false)
-            }.io().subscribe({
-                if (it.status == 0) {
-                    onSuccess()
-                } else {
-                    it.message?.run {
-                        setMessage(this)
-                    }
-                }
-            }, { throwable ->
-                handleNetworkError(throwable)
-            })
-        )
-    }
-
-    /**
-     * Load API from server
-     */
-    protected fun loadApi(
-        source: Single<Response>,
-        onSuccess: () -> Unit,
-        onError: () -> Unit
-    ) {
-        addDispose(
-            source.doOnSubscribe {
-                loading.postValue(true)
-            }.doOnTerminate {
-                loading.postValue(false)
-            }.io().subscribe({
-                if (it.status == 0) {
-                    onSuccess()
-                } else {
-                    onError()
-                    it.message?.run {
-                        setMessage(this)
-                    }
-                }
-            }, { throwable ->
-                onError()
-                handleNetworkError(throwable)
-            })
-        )
-    }
-
-    /**
-     * Load API from server return data response, not handle error
-     */
-    protected fun <T> loadApiV2(
-        source: Single<DataResponse<T>>,
-        onSuccess: (t: T) -> Unit,
-        onError: () -> Unit
-    ) {
-        addDispose(
-            source.doOnSubscribe {
-                loading.postValue(true)
-            }.doOnTerminate {
-                loading.postValue(false)
-            }.io().subscribe({
-                it?.let { response ->
-                    handleResponseNoMessage(response, onSuccess, onError)
-                } ?: run {
-                    onError()
-                }
-            }, {
-                handleErrorNoMessage(it, onError)
-            })
-        )
-    }
-
-    /**
-     * Load API from server return data response, not handle error, return token login
-     */
-    protected fun <T> loadApiV2(
-        source: Single<DataResponse<T>>,
-        onSuccess: (t: T) -> Unit,
-        returnToken: (token: String) -> Unit,
-        onError: () -> Unit
-    ) {
-        addDispose(
-            source.doOnSubscribe {
-                loading.postValue(true)
-            }.doOnTerminate {
-                loading.postValue(false)
-            }.io().subscribe({
-                it?.let { response ->
-                    response.token?.run {
-                        returnToken(this)
-                    }
-                    handleResponseNoMessage(response, onSuccess, onError)
-                } ?: run {
-                    onError()
-                }
-            }, {
-                handleErrorNoMessage(it, onError)
-            })
-        )
-    }
-
-//    /**
-//     * Load API from server return data response, not handle error
-//     */
-//    protected fun <T> loadApiPagingV2(
-//        source: Single<DataResponse<T>>,
-//        onSuccess: (t: T) -> Unit,
-//        returnPage: (allPage: Int) -> Unit,
-//        onError: () -> Unit
-//    ) {
-//        addDispose(
-//            source.doOnSubscribe {
-//                loading.postValue(true)
-//            }.doOnTerminate {
-//                loading.postValue(false)
-//            }.io().subscribe({
-//                it?.let { response ->
-//                    response.allCount?.run {
-//                        returnPage(this)
-//                    }
-//                    handleResponseNoMessage(response, onSuccess, onError)
-//                } ?: run {
-//                    onError()
-//                }
-//            }, {
-//                handleErrorNoMessage(it, onError)
-//            })
-//        )
-//    }
 
     /**
      * handle error request on throwable as Failure
@@ -280,7 +64,7 @@ open class BaseViewModel : ViewModel() {
      * @return failure throwable
      */
 
-    protected fun handleNetworkError(throwable: Throwable?) {
+    protected fun handleNetworkError(throwable: Throwable?, onError: (message : String?) -> Unit) {
         if (throwable is HttpException) {
             if (throwable.code() == Constants.CODE_401
                 || throwable.code() == Constants.CODE_402
@@ -290,7 +74,7 @@ open class BaseViewModel : ViewModel() {
                     tokenExpired.value = true
                 }
             } else if (throwable.code() == Constants.CODE_500) {
-                message.postValue("処理中にエラーが発生しました。")
+                onError("Error")
             } else {
                 throwable.response()?.errorBody()?.let {
                     val adapter: TypeAdapter<Error> =
@@ -298,18 +82,18 @@ open class BaseViewModel : ViewModel() {
                     try {
                         val error: Error? = adapter.fromJson(it.string())
                         if (error != null) {
-                            message.postValue(error.message)
+                            onError(error.message)
                         }
                     } catch (e: IOException) {
                         e.printStackTrace()
-                        message.postValue(e.message)
+                        onError(e.message)
                     }
                 } ?: run {
-                    message.postValue("処理中にエラーが発生しました。")
+                    onError("Error")
                 }
             }
         } else {
-            message.postValue(throwable?.message ?: "処理中にエラーが発生しました。")
+            onError(throwable?.message ?: "Error")
         }
     }
 
@@ -342,17 +126,15 @@ open class BaseViewModel : ViewModel() {
 
     private fun <T> handleResponse(
         response: DataResponse<T>,
-        onSuccess: (t: T) -> Unit,
-        onError: () -> Unit
+        onResult: (resource: Resource<T>) -> Unit,
     ) {
-        if (response.status == 0) {
+        if (response.status == "0") {
             response.data?.let { data ->
-                onSuccess(data)
+                onResult(Resource.success(data))
             }
         } else {
-            onError()
             response.message?.let {
-                setMessage(it)
+                onResult(Resource.error(it, null))
             }
         }
 
@@ -367,7 +149,7 @@ open class BaseViewModel : ViewModel() {
         onSuccess: (t: T) -> Unit,
         onError: () -> Unit
     ) {
-        if (response.status == 0) {
+        if (response.status == "0") {
             response.data?.let { data ->
                 onSuccess(data)
             } ?: run {
